@@ -208,7 +208,7 @@
             var t;
             $('#datos1').empty();
             for (var i = 0; i < info.length; i++) {
-                  t=$("<p/>");
+                  t=$("<section onclick='moreInfo()'/>");
                   t.append("Nombre: " + info[i].c + "<br/>");
                   if(info[i].w != ""){
                     t.append("Whatsapp:" + info[i].w + "</p><br/>"+
