@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+  <link rel="stylesheet" href="css/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Directorio Cerrajerias</title>
+  </head>
+  <body onload="init();">
+    <p id="geolocation">Buscando Localizacion...</p>
+    <section>
+        <label id="lblRadio" for="radioSearch">Radio de Busqueda:</label>
+        <select id="radioSearch">
+                <option value="1">1 km</option>
+                <option value="1.5">1.5 km</option>
+                <option value="2">2 km</option>
+                <option value="3"  selected>3 km</option>
+                <option value="5">5 km</option>
+        </select>
+    </section>
+     <div id="map_canvas" class="div_map"></div>
+    <div id="cInfo"></div>
+    <div id="datos1" >
+    <p></p>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.11.3.min.js"></script>
+    <!--<script src="http://192.168.1.64:8080/target/target-script-min.js#anonymous"></script>-->
+  </body>
+</html>
