@@ -35,7 +35,9 @@
  */
  function init(){
     //alert("hola");
+   
     onDeviceReady();
+    
     //document.addEventListener("deviceready", onDeviceReady, false);
  }
     
@@ -76,14 +78,14 @@
     // onSuccess Geolocation
     //
     function onSuccess(position) {
-       var element = document.getElementById('geolocation');
+       
         lat = position.coords.latitude;
         lon = position.coords.longitude;
-        element.innerHTML = 'Latitude: '+ position.coords.latitude              + '<br />' +
-                            'Longitude: '          + position.coords.longitude             + '<br />';
-                 //var element = document.getElementById('geolocation').innerHTML="Hola";           
+       
+       var element = document.getElementById('geolocation').innerHTML="Hola" + lat + lon;           
         createMap(lat, lon);
         getData(lat, lon);
+          
     }
 
     // onError Callback receives a PositionError object
@@ -112,11 +114,11 @@
           if(dTotal <= radio){
                 createMarkers(lat, lon, tr);
                 createCard(tr, d, t, c, c1, h, h1, r, w, p, l, m, dTotal);
-                $("#distancia").append(dTotal.toFixed(1) + " km "+ tr);     
-                $('#cInfo').append(ci);
+               
             }     
         }
-
+ //$("#distancia").append(dTotal.toFixed(1) + " km "+ tr);     
+                ///$('#cInfo').append(ci);
     //Obtener los datos de la base de datos
      function getData(lat, lon){
         $.getJSON('http://app.directoriocerrajerias.com/respuesta.php',function(data){
@@ -205,18 +207,39 @@
             info.push(cis);
             info.orderByNumber("dt", -1);
            console.log(info.length);
+           var phoneModel = device.version;
             var t;
             $('#datos1').empty();
+            if(phoneModel != "4.2.2")
+            {
             for (var i = 0; i < info.length; i++) {
                   t=$("<section onclick='moreInfo()'/>");
-                  t.append("Nombre: " + info[i].c + "<br/>");
+                  t.append("Nombre: " + info[i].c + "<br/>" +
+                    "Device: " + phoneModel + "</br>");
                   if(info[i].w != ""){
                     t.append("Whatsapp:" + info[i].w + "</p><br/>"+
-                    "<button onclick='myWhats("+info[i].w+")'>Enviar Whatsapp</button><br/>");
+                    "<div class='row'><section class='col s4'><a class='btn-floating btn-large green' href='#' onclick='myWhats("+info[i].w+")'><i class='material-icons'>chat</i></a></section>");
                   }
+                  t.append("<a class='btn-floating btn-large green' href='#' onclick='myWhats("+info[i].w+")'><i class='material-icons'>chat</i></a>"+"<a class='btn-floating btn-large blue' href='#' onclick='myWhats("+info[i].t+")'><i class='material-icons'>call</i></a>"+"<a class='btn-floating btn-large red' href='#' onclick='moreInfo("+info+")'><i class='material-icons'>add</i></a>")
                 $('#datos1').append(t); 
                
             }
+            }else{
+              for (var i = 0; i < info.length; i++) {
+                  t=$("<section onclick='moreInfo()'/>");
+                  t.append("Nombre: " + info[i].c + "<br/>" +
+                    "Device: " + phoneModel + "</br>");
+                  if(info[i].w != ""){
+                    t.append("Whatsapp:" + info[i].w + "</p><br/>"+
+                    "<div class='row'><section class='col s4'><a class='btn-floating btn-large green' href='#' onclick='myWhats("+info[i].w+")'><img src='img/logo.png'></a></section>");
+                  }
+                  t.append("<a class='btn-floating btn-large green' href='#' onclick='myWhats("+info[i].w+")'><i class='material-icons'>chat</i></a>"+"<a class='btn-floating btn-large blue' href='#' onclick='myWhats("+info[i].t+")'><i class='material-icons'>call</i></a>"+"<a class='btn-floating btn-large red' href='#' onclick='moreInfo("+info+")'><i class='material-icons'>add</i></a>")
+                $('#datos1').append(t); 
+               
+            }
+
+            }
+
            }
 
            function myWhats(numTel){

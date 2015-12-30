@@ -12,43 +12,73 @@
     <title>Directorio Cerrajerias</title>
   </head>
   <body onload="init();">
-  <header>
-      <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i>
-      </a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-      </ul>
-    </div>
-  </nav>
+  <header class="navbar-fixed">
+    <nav >
+      <div class="nav-wrapper light-blue">
+        <a href="#!" class="brand-logo">DirectorioCerrajerias</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">Buscar Cerrajeros</a></li>
+          <li><a href="badges.html">Lista de Cerrajeros</a></li>
+          <li><a href="collapsible.html">Otro</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+         <li><a href="sass.html">Buscar Cerrajeros</a></li>
+          <li><a href="badges.html">Lista de Cerrajeros</a></li>
+          <li><a href="collapsible.html">Otro</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
-    <p id="geolocation">Buscando Localizacion...</p>
-    <section>
+  <main>
+    <p id="geolocation"></p>
+    <section class="container row">
+      <section class="col s12">
         <label id="lblRadio" for="radioSearch">Radio de Busqueda:</label>
         <select id="radioSearch" class="browser-default">
-                <option value="1">1 km</option>
-                <option value="1.5">1.5 km</option>
-                <option value="2">2 km</option>
-                <option value="3"  selected>3 km</option>
-                <option value="5">5 km</option>
+          <option value="1">1 km</option>
+          <option value="1.5">1.5 km</option>
+          <option value="2">2 km</option>
+          <option value="3"  selected>3 km</option>
+          <option value="5">5 km</option>
         </select>
+      </section>  
     </section>
-     <div id="map_canvas" class="div_map"></div>
-    <div id="cInfo"></div>
-    <div id="datos1">
-    <p></p>
+    <section id="map_locksmith">
+     <div id="map_canvas"></div>
+    </section>
+    <section id="list_c" class="container">
+    <div  class="card blue-text text-darken-2">
+     <div class="card-content">
+     <section class="card-title text_center">Tecnollave</section>
+
+        <p>
+        <img class="img_center" src="img/logo.png" alt="logo"/>
+        Domicilio: Colon #340</br>
+        Telefono: 36560708</br>
+        Whatsapp: 3331794082</br>
+        Cel: 3331794082</p>
+        <section>
+        <span class="text_right">
+         <p>Distancia: Un chingo</p>
+        </span>
+        <span>
+        <a class='waves-effect waves-light btn-floating btn-large green' href='#'>
+          <i class='material-icons '>chat</i></a>        
+        <a class='waves-effect waves-light btn-floating btn-large blue' href='#'>
+          <i class='material-icons'>call</i></a>
+        <a class='waves-effect waves-light btn-floating btn-large red' href='#'>
+          <i class='material-icons'>add</i></a>  
+        </span>
+        </section>
+        </div>
     </div>
+      <div id="cInfo" class="black-text"></div>
+      <div id="datos1">
+      </div>
+    </section>
+  </main>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.11.3.min.js"></script>
@@ -57,6 +87,7 @@
      <script>
         $( document ).ready(function(){
             $(".button-collapse").sideNav();
+             
         });
      </script>
     <!--<script src="http://192.168.1.64:8080/target/target-script-min.js#anonymous"></script>-->

@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"Whatsapp\"><param name=\"android-package\" value=\"mobi.moica.whatsapp.Whatsapp\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -60,6 +64,9 @@
         },
         "mobi.moica.whatsapp": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
     "dependent_plugins": {},
@@ -75,6 +82,13 @@
             "id": "mobi.moica.whatsapp.whatsapp",
             "clobbers": [
                 "cordova.plugins.Whatsapp"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "clobbers": [
+                "device"
             ]
         }
     ],
